@@ -7,34 +7,34 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    public class BinarySearchExtension
+    public static class BinarySearchExtension
     {
-        public int BinarySearch<T>(T[] array, T value)
+        public static int BinarySearch<T>(this T[] array, T value)
         {
             return BinarySearch(array, value, 0, 0, Comparer<T>.Default);
         }
 
-        public int BinarySearch<T>(T[] array, T value, int index, int length)
+        public static int BinarySearch<T>(this T[] array, T value, int index, int length)
         {
             return BinarySearch(array, value, index, length, Comparer<T>.Default);
         }
 
-        public int BinarySearch<T>(T[] array, T value, Comparison<T> comparison)
+        public static int BinarySearch<T>(this T[] array, T value, Comparison<T> comparison)
         {
             return BinarySearch(array, value, 0, 0, Comparer<T>.Create(comparison));
         }
 
-        public int BinarySearch<T>(T[] array, T value, int index, int length, Comparison<T> comparison)
+        public static int BinarySearch<T>(this T[] array, T value, int index, int length, Comparison<T> comparison)
         {
             return BinarySearch(array, value, index, length, Comparer<T>.Create(comparison));
         }
 
-        public int BinarySearch<T>(T[] array, T value, IComparer<T> comparer)
+        public static int BinarySearch<T>(this T[] array, T value, IComparer<T> comparer)
         {
             return BinarySearch(array, value, 0, 0, comparer);
         }
 
-        public int BinarySearch<T>(T[] array, T value, int index, int length, IComparer<T> comparer)
+        public static int BinarySearch<T>(this T[] array, T value, int index, int length, IComparer<T> comparer)
         {
             if (ReferenceEquals(array, null))
                 throw new ArgumentNullException($"{nameof(array)} is null.");
