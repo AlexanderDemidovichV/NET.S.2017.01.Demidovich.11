@@ -11,7 +11,7 @@ namespace Task2
     {
         public static int BinarySearch<T>(this T[] array, T value)
         {
-            return BinarySearch(array, value, 0, 0, Comparer<T>.Default);
+            return BinarySearch(array, value, 0, array.Length, Comparer<T>.Default);
         }
 
         public static int BinarySearch<T>(this T[] array, T value, int index, int length)
@@ -21,7 +21,7 @@ namespace Task2
 
         public static int BinarySearch<T>(this T[] array, T value, Comparison<T> comparison)
         {
-            return BinarySearch(array, value, 0, 0, Comparer<T>.Create(comparison));
+            return BinarySearch(array, value, 0, array.Length, Comparer<T>.Create(comparison));
         }
 
         public static int BinarySearch<T>(this T[] array, T value, int index, int length, Comparison<T> comparison)
@@ -31,7 +31,7 @@ namespace Task2
 
         public static int BinarySearch<T>(this T[] array, T value, IComparer<T> comparer)
         {
-            return BinarySearch(array, value, 0, 0, comparer);
+            return BinarySearch(array, value, 0, array.Length, comparer);
         }
 
         public static int BinarySearch<T>(this T[] array, T value, int index, int length, IComparer<T> comparer)
@@ -76,6 +76,7 @@ namespace Task2
                 {
                     return middle;
                 }
+
             }
 
             return -1;
