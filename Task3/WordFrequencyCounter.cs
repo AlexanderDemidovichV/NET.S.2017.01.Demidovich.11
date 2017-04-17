@@ -38,10 +38,11 @@ namespace Task3
 
             foreach (Match match in matches)
             {
-                if (dictionaryCounter.ContainsKey(match.Value.ToLowerInvariant()))
-                    dictionaryCounter[match.Value.ToLowerInvariant()]++;
+                string word = match.Value.ToLowerInvariant();
+                if (dictionaryCounter.ContainsKey(word))
+                    dictionaryCounter[word]++;
                 else
-                    dictionaryCounter.Add(match.Value.ToLowerInvariant(), 1);
+                    dictionaryCounter.Add(word, 1);
             }
 
             return dictionaryCounter;
