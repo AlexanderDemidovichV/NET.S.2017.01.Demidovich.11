@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Task3
 {
+    /// <summary>
+    /// Provides methods to count the frequency usage of each word.
+    /// </summary>
     public static class WordFrequencyCounter
     {
 
+        #region Public Methods
+
+        /// <summary>
+        /// Counts the frequency usage of each word.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <returns>Dictionary of words frequencies occurence in the file.</returns>
+        /// <exception cref="System.IO.FileNotFoundException">path</exception>
         public static Dictionary<string, int> Counter(string path)
         {
             if (!File.Exists(path))
@@ -29,6 +37,12 @@ namespace Task3
             }
         }
 
+        /// <summary>
+        /// Counts the frequency usage of each word.
+        /// </summary>
+        /// <param name="matches">Represents the set of successful matches.</param>
+        /// <returns>Dictionary of frequencies of words occurence in the file.</returns>
+        /// <exception cref="System.ArgumentNullException">matches</exception>
         public static Dictionary<string, int> Counter(MatchCollection matches)
         {
             if (ReferenceEquals(matches, null))
@@ -47,5 +61,8 @@ namespace Task3
 
             return dictionaryCounter;
         }
+
+        #endregion
+
     }
 }
