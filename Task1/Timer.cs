@@ -14,7 +14,7 @@ namespace Task1
         #region Public Events
 
         /// <summary>
-        /// Gets the list of event handlers that are attached to this Component.
+        /// Gets the list of event handlers that are attached to this object.
         /// </summary>
         public event EventHandler<TimeOutEventArgs> TimeOut = delegate { };
 
@@ -36,14 +36,17 @@ namespace Task1
         /// <summary>
         /// Sets the Interval to the specified number of milliseconds.
         /// </summary>
-        /// <param name="elapse">The elapse.</param>
+        /// <param name="elapse">A time to wait.</param>
+        /// <param name="message">A message.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">elapse</exception>
-        public void SetTimer(int elapse)
+        public void SetTimer(int elapse, string message)
         {
             if (elapse < 0)
                 throw new ArgumentOutOfRangeException($"{nameof(elapse)} is less than zero.");
+            if (ReferenceEquals(message, null))
+                throw new ArgumentNullException($"{nameof(message)} is null.");
             Thread.Sleep(elapse);
-            OnTimeOut(this, new TimeOutEventArgs(elapse));
+            OnTimeOut(this, new TimeOutEventArgs(elapse, message));
         }
 
         #endregion

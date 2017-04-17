@@ -21,7 +21,7 @@ namespace Task1.ConsoleTest
             {
                 Console.WriteLine("Custom sub.");
             };
-            timer.SetTimer(3000);
+            timer.SetTimer(3000, "WAKE UP");
         }
     }
 }
