@@ -7,33 +7,89 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
+    /// <summary>
+    /// Provides extension methods for searching arrays
+    /// </summary>
     public static class BinarySearchExtension
     {
-        public static int BinarySearch<T>(this T[] array, T value)
-        {
-            return BinarySearch(array, value, 0, array.Length, Comparer<T>.Default);
-        }
 
-        public static int BinarySearch<T>(this T[] array, T value, int index, int length)
-        {
-            return BinarySearch(array, value, index, length, Comparer<T>.Default);
-        }
+        #region Public Methods
 
-        public static int BinarySearch<T>(this T[] array, T value, Comparison<T> comparison)
-        {
-            return BinarySearch(array, value, 0, array.Length, Comparer<T>.Create(comparison));
-        }
+        /// <summary>
+        /// Searches an entire one-dimensional sorted array for a specific element.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of the array.</typeparam>
+        /// <param name="array">The sorted one-dimensional array to search.</param>
+        /// <param name="value">The object to search for.</param>
+        /// <returns>The index of the specified value in the specified array, if value is found. If
+        /// value is not found a negative number.</returns>
+        public static int BinarySearch<T>(this T[] array, T value) 
+            => BinarySearch(array, value, 0, array.Length, Comparer<T>.Default);
 
-        public static int BinarySearch<T>(this T[] array, T value, int index, int length, Comparison<T> comparison)
-        {
-            return BinarySearch(array, value, index, length, Comparer<T>.Create(comparison));
-        }
+        /// <summary>
+        /// Searches an entire one-dimensional sorted array for a specific element.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of the array.</typeparam>
+        /// <param name="array">The sorted one-dimensional array to search.</param>
+        /// <param name="index">The starting index of the range to search.</param>
+        /// <param name="length">The length of the range to search.</param>
+        /// <param name="value">The object to search for.</param>
+        /// <returns>The index of the specified value in the specified array, if value is found. If
+        /// value is not found a negative number.</returns>
+        public static int BinarySearch<T>(this T[] array, T value, int index, int length) 
+            => BinarySearch(array, value, index, length, Comparer<T>.Default);
 
-        public static int BinarySearch<T>(this T[] array, T value, IComparer<T> comparer)
-        {
-            return BinarySearch(array, value, 0, array.Length, comparer);
-        }
+        /// <summary>
+        /// Searches an entire one-dimensional sorted array for a specific element, using the Comparasion delegate.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of the array.</typeparam>
+        /// <param name="array">The sorted one-dimensional array to search.</param>
+        /// <param name="value">The object to search for.</param>
+        /// <param name="comparison">The Comparison to use when comparing elements.</param>
+        /// <returns>The index of the specified value in the specified array, if value is found. If
+        /// value is not found a negative number.</returns>
+        public static int BinarySearch<T>(this T[] array, T value, Comparison<T> comparison) 
+            => BinarySearch(array, value, 0, array.Length, Comparer<T>.Create(comparison));
 
+        /// <summary>
+        /// Searches an entire one-dimensional sorted array for a specific element, using the Comparasion delegate.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of the array.</typeparam>
+        /// <param name="array">The sorted one-dimensional array to search.</param>
+        /// <param name="index">The starting index of the range to search.</param>
+        /// <param name="length">The length of the range to search.</param>
+        /// <param name="value">The object to search for.</param>
+        /// <param name="comparison">The Comparison to use when comparing elements.</param>
+        /// <returns>The index of the specified value in the specified array, if value is found. If
+        /// value is not found a negative number.</returns>
+        public static int BinarySearch<T>(this T[] array, T value, int index, int length, Comparison<T> comparison) 
+            => BinarySearch(array, value, index, length, Comparer<T>.Create(comparison));
+
+        /// <summary>
+        /// Searches an entire one-dimensional sorted array for a specific element, using the specified IComparer generic interface.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of the array.</typeparam>
+        /// <param name="array">The sorted one-dimensional array to search.</param>
+        /// <param name="value">The object to search for.</param>
+        /// <param name="comparer">The IComparer generic interface implementation to use when comparing elements, 
+        /// or null to use the IComparable generic interface implementation of each element.</param>
+        /// <returns>The index of the specified value in the specified array, if value is found. If
+        /// value is not found a negative number.</returns>
+        public static int BinarySearch<T>(this T[] array, T value, IComparer<T> comparer) 
+            => BinarySearch(array, value, 0, array.Length, comparer);
+
+        /// <summary>
+        /// Searches an entire one-dimensional sorted array for a specific element, using the specified IComparer generic interface.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements of the array.</typeparam>
+        /// <param name="array">The sorted one-dimensional array to search.</param>
+        /// <param name="index">The starting index of the range to search.</param>
+        /// <param name="length">The length of the range to search.</param>
+        /// <param name="value">The object to search for.</param>
+        /// <param name="comparer">The IComparer generic interface implementation to use when comparing elements, 
+        /// or null to use the IComparable generic interface implementation of each element.</param>
+        /// <returns>The index of the specified value in the specified array, if value is found. If
+        /// value is not found a negative number.</returns>
         public static int BinarySearch<T>(this T[] array, T value, int index, int length, IComparer<T> comparer)
         {
             if (ReferenceEquals(array, null))
@@ -76,11 +132,11 @@ namespace Task2
                 {
                     return middle;
                 }
-
             }
-
             return -1;
-
         }
+
+        #endregion
+
     }
 }
