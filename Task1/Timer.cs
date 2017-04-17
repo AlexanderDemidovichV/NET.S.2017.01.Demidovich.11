@@ -1,7 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Threading;
-using System.Timers;
 
 namespace Task1
 {
