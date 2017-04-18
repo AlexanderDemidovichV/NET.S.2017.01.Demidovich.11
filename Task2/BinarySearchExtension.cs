@@ -95,8 +95,11 @@ namespace Task2
             if (ReferenceEquals(array, null))
                 throw new ArgumentNullException($"{nameof(array)} is null.");
 
-            if (ReferenceEquals(value, null))   
+            if (value.Equals(default(T)))   
                 throw new ArgumentNullException($"{nameof(value)} is null.");
+
+            if (ReferenceEquals(comparer, null))
+                throw new ArgumentNullException($"{nameof(comparer)} is null.");
 
             if (index < 0)
                 throw new ArgumentOutOfRangeException($"{nameof(index)} less than zero.");
